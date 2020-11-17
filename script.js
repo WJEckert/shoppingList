@@ -1,4 +1,18 @@
-function main() {
+function deleteShoppingItem(){
+    $('ul').on('click','.shopping-item-delete',  function(event){
+
+        $(event.currentTarget).closest("li").remove();
+        
+    })
+}
+
+function checkShoppingItem(){
+    $(`ul`).on('click','.shopping-item-toggle', function(event){
+        $(event.currentTarget).closest('li').find('.shopping-item').toggleClass('shopping-item__checked')
+    })
+}
+
+function addItem() {
     $("#js-shopping-list-form").submit(event => {
         event.preventDefault();  
         const item = $(event.currentTarget).find("#shopping-list-entry").val();
@@ -10,19 +24,16 @@ function main() {
 
 
     })
-
-    
-    $('ul').on('click','.shopping-item-delete',  function(event){
-
-        $(event.currentTarget).closest("li").remove();
-        
-    })
-    $(`ul`).on('click','.shopping-item-toggle', function(event){
-        $(event.currentTarget).closest('li').find('.shopping-item').toggleClass('shopping-item__checked')
-    })
-
 }
 
+
+
+function main() {
+    addItem();    
+    deleteShoppingItem();
+    checkShoppingItem();
+
+}
 
 
 
